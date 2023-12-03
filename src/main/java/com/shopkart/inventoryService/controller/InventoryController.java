@@ -77,6 +77,17 @@ public class InventoryController {
         }
     }
 
+    @PostMapping
+    public ResponseEntity<Boolean> saveInventoryMultiple(@RequestBody List<InventoryDto> inventoryDtos){
+        for (InventoryDto inventoryDto : inventoryDtos) {
+            Inventory inventory = new Inventory();
+            BeanUtils.copyProperties(inventoryDto, inventory);
+            inventoryService.addOrUpdateInventory(inventory);
+        }
+        return ResponseEntity.ok(Boolean.TRUE);
+
+
+    }
 //    @GetMapping("/product/{productId}")
 //    public ResponseEntity<List<InventoryDto>> getInventoryByProductId(@PathVariable String productId){
 //
