@@ -77,7 +77,7 @@ public class InventoryController {
         }
     }
 
-    @PostMapping
+    @PostMapping("/saveMultiple")
     public ResponseEntity<Boolean> saveInventoryMultiple(@RequestBody List<InventoryDto> inventoryDtos){
         for (InventoryDto inventoryDto : inventoryDtos) {
             Inventory inventory = new Inventory();
